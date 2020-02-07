@@ -41,15 +41,16 @@ public class Aquarium extends GFX {
 		super(WIDTH, HEIGHT);
 	}
 
-	int fish1X = getWidth() + 100;
-	int fish2X = getWidth() - 300;
-	// little red fish 
-	int fish3X = -200;
+	/*
+	 * int fish1X = getWidth() + 100; int fish2X = getWidth() - 300; // little red
+	 * fish int fish3X = -200;
+	 */
 	
 	Fish nemo = new Fish(Color.magenta, 250, 250, true, true);
 	Fish marlin = new Fish(Color.orange, 100, 100, false, false);
 	Fish dory = new Fish(Color.pink, 300, 100, true, false);
 	Fish tuna = new Fish(Color.red, 100, 400, false, true);
+	Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
 
 	@Override
 	public void draw(Graphics2D g) {
@@ -57,39 +58,34 @@ public class Aquarium extends GFX {
 		g.setColor(Color.blue);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		nemo.draw(g);
-		
 		marlin.draw(g);
 		dory.draw(g);
+		
+		salmon.draw(g);
+		nemo.draw(g);
 		tuna.draw(g);
-		// Draw the fish!
-		DrawFish.facingLeft(g, Color.yellow, fish1X, 200);
-		// Draw the confused fish!
-		DrawFish.facingRight(g, Color.green, fish2X, 300);
-
-		// What if we wanted this little fish to swim, too?
-		DrawFish.smallFacingRight(g, Color.red, fish3X, 100);
-
+		
+		
+		/*
+		 * // Draw the fish! DrawFish.facingLeft(g, Color.yellow, fish1X, 200); // Draw
+		 * the confused fish! DrawFish.facingRight(g, Color.green, fish2X, 300);
+		 * 
+		 * // What if we wanted this little fish to swim, too?
+		 * DrawFish.smallFacingRight(g, Color.red, fish3X, 100);
+		 */
 		
 		// Draw our snail!
 		algorithm.draw(g);
 
-		// Move the fish!
-		fish1X -= 1;
-		fish2X += 2;
-		fish3X += 2;
-		
-		if (fish1X > getWidth() + 100) {
-			fish1X = 100;
-		}
-		
-		if (fish2X > getWidth() + 100) {
-			fish2X = -100;
-		}
-		
-		if (fish3X > getWidth() + 100) {
-			fish3X = -100;
-		}
+		/*
+		 * // Move the fish! fish1X -= 1; fish2X += 2; fish3X += 2;
+		 * 
+		 * if (fish1X > getWidth() + 100) { fish1X = 100; }
+		 * 
+		 * if (fish2X > getWidth() + 100) { fish2X = -100; }
+		 * 
+		 * if (fish3X > getWidth() + 100) { fish3X = -100; }
+		 */
 	}
 
 	public static void main(String[] args) {

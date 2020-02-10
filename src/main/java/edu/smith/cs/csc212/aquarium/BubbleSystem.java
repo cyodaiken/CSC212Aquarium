@@ -57,11 +57,7 @@ public class BubbleSystem {
 		Random random = new Random(); 
 		int dx = random.nextInt(15);
 		
-	
-		
-	
-		
-		Shape bubble = new Ellipse2D.Double(x - 15, y - 10, dx, dx);
+		Shape bubble = new Ellipse2D.Double(x - 15, y - 10, 10, 10);
 		
 		g.draw(bubble);
 		g.fill(bubble);

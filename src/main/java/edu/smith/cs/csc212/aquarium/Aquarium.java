@@ -1,6 +1,8 @@
 package edu.smith.cs.csc212.aquarium;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
 import java.awt.Graphics2D;
 
 import me.jjfoley.gfx.GFX;
@@ -39,33 +41,68 @@ public class Aquarium extends GFX {
 		// Here we ask GFX to make our window of size WIDTH and HEIGHT.
 		// Don't change this here, edit the variables instead.
 		super(WIDTH, HEIGHT);
+		
+		this.fillBubble();
 	}
 
 	/*
 	 * int fish1X = getWidth() + 100; int fish2X = getWidth() - 300; // little red
 	 * fish int fish3X = -200;
 	 */
-	
+
 	Fish nemo = new Fish(Color.magenta, 250, 250, true, true);
 	Fish marlin = new Fish(Color.orange, 100, 100, false, false);
 	Fish dory = new Fish(Color.pink, 300, 100, true, false);
 	Fish tuna = new Fish(Color.red, 100, 400, false, true);
 	Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
 
+	BubbleSystem[] arr = new BubbleSystem[10];
+
+	// BubbleSystem b1 = new BubbleSystem(Color.white, 200, 200);
+
+	
+	public void fillBubble() {
+		
+		for (int i = 0; i < arr.length; i++) {
+			  Random random = new Random(); 
+			  int nX = random.nextInt(500); 
+			  int nY = random.nextInt(500);  
+			  arr[i] = new BubbleSystem(Color.white, nX, nY);
+		}
+		
+	}
+	
+	
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
 		g.setColor(Color.blue);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		
-		marlin.draw(g);
-		dory.draw(g);
-		
+
 		salmon.draw(g);
 		nemo.draw(g);
 		tuna.draw(g);
+
+		marlin.draw(g);
+		dory.draw(g);
 		
 		
+		
+		for (BubbleSystem bubble: arr)	{
+			
+			bubble.draw(g);
+			
+		}
+		
+		
+		
+		// b1.draw(g);
+
+
+		//	for(int i = 0; i < arr.length; i++) {
+		//		arr[i].draw(g);
+		//	}
+
 		/*
 		 * // Draw the fish! DrawFish.facingLeft(g, Color.yellow, fish1X, 200); // Draw
 		 * the confused fish! DrawFish.facingRight(g, Color.green, fish2X, 300);
@@ -73,7 +110,7 @@ public class Aquarium extends GFX {
 		 * // What if we wanted this little fish to swim, too?
 		 * DrawFish.smallFacingRight(g, Color.red, fish3X, 100);
 		 */
-		
+
 		// Draw our snail!
 		algorithm.draw(g);
 

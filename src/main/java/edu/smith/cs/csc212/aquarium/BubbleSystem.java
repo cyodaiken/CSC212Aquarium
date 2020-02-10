@@ -10,42 +10,41 @@ public class BubbleSystem {
 	
 	int x;
 	int y;
+	int wiggle;
+	int w;
+	int h; 
 	Color color;
 	int period = 0; 
+	// int delay = 0;
 	
 	
-	public BubbleSystem(Color c, int startX, int startY) {
+	public BubbleSystem(Color c, int startX, int startY, int width, int height) {
 		
 		this.color = c;
 		this.x = startX;
 		this.y = startY;
-		
-		
+		this.w = width;
+		this.h = width;
+		this.wiggle = 0;
+		// this.delay = delay;	
 		
 	}
 	
 	public void swim() {
 		
+		// this.delay += 1;
+		
 		this.y -= 1;
 		
-		if (this.y == -20) {
+		if (this.y == -30) {
 			this.y = 540;	
-			
 		}
 		
-		//this.x -= 1;
-		
 		/*
-		 * if (period == 30) {
-		 * 
-		 * period = 0;
-		 * 
-		 * this.x = -this.x;
-		 * 
-		 * } else {
-		 * 
-		 * period += 1; }
+		 * if (this.delay > 100) { this.delay = 0; this.x -= 40; if(this.x < 0 ) {
+		 * this.x = 500; } }
 		 */
+		this.wiggle = (int) (30.0 * Math.sin(this.y / 80.0)); 
 		
 	}
 	
@@ -54,14 +53,10 @@ public class BubbleSystem {
 		
 		g.setColor(color);
 		
-		Random random = new Random(); 
-		int dx = random.nextInt(15);
-		
-		Shape bubble = new Ellipse2D.Double(x - 15, y - 10, 10, 10);
+		Shape bubble = new Ellipse2D.Double(x - 15 + this.wiggle, y - 10, w, h);
 		
 		g.draw(bubble);
 		g.fill(bubble);
-		
 		
 		this.swim();
 	

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 
 import me.jjfoley.gfx.GFX;
 
@@ -56,18 +58,25 @@ public class Aquarium extends GFX {
 	Fish tuna = new Fish(Color.red, 100, 400, false, true);
 	Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
 
-	BubbleSystem[] arr = new BubbleSystem[10];
+	BubbleSystem[] bubble = new BubbleSystem[10];
+	
+	Shape box = new Ellipse2D.Double(420, 430, 100, 80);
 
 	// BubbleSystem b1 = new BubbleSystem(Color.white, 200, 200);
 
 	
 	public void fillBubble() {
 		
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < bubble.length; i++) {
 			  Random random = new Random(); 
-			  int nX = random.nextInt(500); 
-			  int nY = random.nextInt(500);  
-			  arr[i] = new BubbleSystem(Color.white, nX, nY);
+			  
+			  int nX = random.nextInt(500 + 1 - 450) + 450; 
+			  int nY = random.nextInt(500);
+			  
+			  // source: https://stackoverflow.com/questions/2444019/how-do-i-generate-a-random-integer-between-min-and-max-in-java
+			  int nW = random.nextInt(15 + 1 - 7) + 7;
+			 
+			  bubble[i] = new BubbleSystem(Color.white, nX, nY, nW, nW);
 		}
 		
 	}
@@ -86,22 +95,19 @@ public class Aquarium extends GFX {
 		marlin.draw(g);
 		dory.draw(g);
 		
-		
-		
-		for (BubbleSystem bubble: arr)	{
+		for (BubbleSystem bubble: bubble){
 			
 			bubble.draw(g);
 			
 		}
+		g.setColor(Color.cyan);
+		g.draw(box);
+		g.fill(box);
 		
 		
 		
 		// b1.draw(g);
 
-
-		//	for(int i = 0; i < arr.length; i++) {
-		//		arr[i].draw(g);
-		//	}
 
 		/*
 		 * // Draw the fish! DrawFish.facingLeft(g, Color.yellow, fish1X, 200); // Draw

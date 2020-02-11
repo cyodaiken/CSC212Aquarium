@@ -9,6 +9,8 @@ import java.awt.geom.Ellipse2D;
 
 import me.jjfoley.gfx.GFX;
 
+
+// Didn't have a buddy in lab
 /**
  * Aquarium is a graphical "application" that uses some code I built and have
  * shared with you that takes care of opening a window and communicating with
@@ -64,23 +66,10 @@ public class Aquarium extends GFX {
 		}
 	}
 
-	/*
-	 * int fish1X = getWidth() + 100; int fish2X = getWidth() - 300; // little red
-	 * fish int fish3X = -200;
-	 */
 
-	/*
-	 * Fish nemo = new Fish(Color.magenta, 250, 250, true, true); Fish marlin = new
-	 * Fish(Color.orange, 100, 100, false, false); Fish dory = new Fish(Color.pink,
-	 * 300, 100, true, false); Fish tuna = new Fish(Color.red, 100, 400, false,
-	 * true); Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
-	 */
-	
 	Fish[] fish = new Fish[15];
 	BubbleSystem[] bubble = new BubbleSystem[10];
-
-	// Shape box = new Ellipse2D.Double(420, 430, 100, 80);
-	// BubbleSystem b1 = new BubbleSystem(Color.white, 200, 200);
+	
 
 
 	public void fillBubble() {
@@ -103,20 +92,14 @@ public class Aquarium extends GFX {
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
-		// g.setColor(Color.blue);
-		
+	
 		algorithm.update();
 		
 		g.setColor(new Color(0, algorithm.green, 255));
 		
 		g.fillRect(0, 0, getWidth(), getHeight());
 
-		/*
-		 * salmon.draw(g); nemo.draw(g); tuna.draw(g);
-		 * 
-		 * marlin.draw(g); dory.draw(g);
-		 */
-
+	
 		for (BubbleSystem bubble: bubble){
 			bubble.draw(g);
 			}
@@ -128,33 +111,13 @@ public class Aquarium extends GFX {
 		g.setColor(BROWN);
 		g.fillRect(400, 430, 120, 80);
 		
-		
-		// g.draw(box);
-		// g.fill(box);
-		// b1.draw(g);
-
-		/*
-		 * // Draw the fish! DrawFish.facingLeft(g, Color.yellow, fish1X, 200); // Draw
-		 * the confused fish! DrawFish.facingRight(g, Color.green, fish2X, 300);
-		 * 
-		 * // What if we wanted this little fish to swim, too?
-		 * DrawFish.smallFacingRight(g, Color.red, fish3X, 100);
-		 */
 
 		// Draw our snail!
 	
 		
 		algorithm.draw(g);
 
-		/*
-		 * // Move the fish! fish1X -= 1; fish2X += 2; fish3X += 2;
-		 * 
-		 * if (fish1X > getWidth() + 100) { fish1X = 100; }
-		 * 
-		 * if (fish2X > getWidth() + 100) { fish2X = -100; }
-		 * 
-		 * if (fish3X > getWidth() + 100) { fish3X = -100; }
-		 */
+	
 	}
 
 	public static void main(String[] args) {

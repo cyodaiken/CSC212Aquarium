@@ -34,62 +34,54 @@ public class Fish {
 	}
 
 	public void swim() {
-		
-		
-	/*
-	 * if (this.x + this.speedX< this.destX) {
-	 * 
-	 * this.x += this.speedX;
-	 * 
-	 * } else if (this.x - this.speedX > this.destX) {
-	 * 
-	 * this.x -= this.speedX;
-	 * 
-	 * } else {
-	 * 
-	 * // made it this.x = this.destX;
-	 * 
-	 * if (this.y + this.speedY < this.destY) { this.y += this.speedY; } else if
-	 * (this.y - this.speedY > this.destY) { this.y -= this.speedY; } else { this.y
-	 * += this.destY; } } }
-	 */
 
+		if (this.x < this.speedX + this.destX) { 
+
+			facingLeft = false;
+
+			this.x += this.speedX;
+			
+
+		} else if (this.x > this.speedX - this.destX) {
+
+			facingLeft = true;
+			this.x -= this.speedX;
+
+		} 
+		 
+	
+
+		if (this.y < this.speedY + this.destY) { 
+
+			this.y += this.speedY; 
+			
+		} else if (this.y > this.speedY - this.destY) { 
+
+			this.y -= this.speedY; 
+
+		} 
 		
-		/*
-		 * if (this.facingLeft) { if (this.x < this.destX) { this.x -= 1; if (this.x ==
-		 * 0) { this.x = 500; } } } else { if(this.x < this.destX) { this.x += 1; if
-		 * (this.x == 500) { this.x = 0; } } }
-		 */
+		
+		  if (this.y == this.destY || this.x == this.destX) {
 		  
-		  if (this.facingLeft) {
-			  this.x += -speedX;
-			  if (this.x == -20) {
-				  this.x = 520; 
-				  } else if (this.x == 520) {  
-					  this.x = -20;
-					  } 
-			  } else { 
-				  this.x += speedX;
-				  if(this.x == 520) {
-					  this.x = -20; 
-					  } else if (this.x == -20) {
-						  this.x = 520;
-						  }
-				  }
-
-		  if (this.y < this.destY) { 
-			  // if (Math.abs(this.y - this.destY) < 10) 
-			  // somehow pick a new destination} 
-				  this.y += speedY; 
-				  
-			} else if (this.y > this.destY) {
-				this.y -= 1; 
-			  } else {
-				  Random random = new Random(); 
-				  this.destX = random.nextInt(500); 
-				  this.destY = random.nextInt(500); 
-				  }
+		  Random random = new Random(); this.destX = random.nextInt(500); this.destY =
+		  random.nextInt(500);
+		  
 		  }
+		 
+	
+		/*
+		 * if (this.facingLeft) { this.x += -speedX; if (this.x == -20) { this.x = 520;
+		 * } else if (this.x == 520) { this.x = -20; } } else { this.x += speedX;
+		 * if(this.x == 520) { this.x = -20; } else if (this.x == -20) { this.x = 520; }
+		 * }
+		 * 
+		 * if (this.y < this.destY) { // if (Math.abs(this.y - this.destY) < 10) //
+		 * somehow pick a new destination} this.y += speedY; } else if (this.y >
+		 * this.destY) { this.y -= 1; } else { Random random = new Random(); this.destX
+		 * = random.nextInt(500); this.destY = random.nextInt(500); }
+		 */
+	}
 
 
 	public void draw(Graphics2D g) {

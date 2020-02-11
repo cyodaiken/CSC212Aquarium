@@ -24,7 +24,8 @@ public class Snail {
 	 */
 	public int y;
 	
-	int green; 
+	public int green;
+	public boolean isAwake;
 
 	/**
 	 * Create a snail at (sx, sy) with position s.
@@ -39,6 +40,26 @@ public class Snail {
 		this.x = sx;
 		this.y = sy;
 		this.green = 0;
+		this.isAwake = false;
+	}
+	
+	public void update() {
+		if (this.isAwake) {	
+			if (this.green > 0) {
+			this.green -= 1; 
+			} else {
+				this.isAwake = false;
+			}
+		} else {
+			// asleep
+			if (this.green < 255) {
+				
+					this.green += 1;
+				
+			} else {
+				this.isAwake = true;
+			}
+		}
 	}
 
 	/**
@@ -138,7 +159,7 @@ public class Snail {
 	 * @param shellColor The color of the snail shell.
 	 * @param eyeColor   The color of the snail eye.
 	 */
-	public static void drawSnail(Graphics2D g, Color bodyColor, Color shellColor, Color eyeColor) {
+	public void drawSnail(Graphics2D g, Color bodyColor, Color shellColor, Color eyeColor) {
 		Shape body = new Rectangle2D.Double(0, 0, 40, 50);
 		Shape tentacleL = new Rectangle2D.Double(0, -20, 5, 20);
 		Shape eyeWhiteL = new Ellipse2D.Double(-4, -28, 12, 12);
@@ -148,14 +169,17 @@ public class Snail {
 		g.fill(body);
 		g.fill(tentacleL);
 		
-		if (Snail.green < 130) { 
+		if (isAwake) {
 			g.setColor(Color.white);
+			g.fill(eyeWhiteL);
+			g.setColor(eyeColor);
+			g.fill(eyePupilL);
 		} else {
-			g.setColor(Color.black);
+			g.setColor(Color.red);
+			g.fill(eyeWhiteL);
+			g.fill(eyePupilL);
 		}
-		g.fill(eyeWhiteL);
-		g.setColor(eyeColor);
-		g.fill(eyePupilL);
+
 
 		Shape tentacleR = new Rectangle2D.Double(35, -20, 5, 20);
 		Shape eyeWhiteR = new Ellipse2D.Double(35 - 4, -28, 12, 12);
@@ -163,11 +187,19 @@ public class Snail {
 
 		g.setColor(bodyColor);
 		g.fill(tentacleR);
+		
+		if (isAwake) {
 		g.setColor(Color.white);
 		g.fill(eyeWhiteR);
 		g.setColor(eyeColor);
 		g.fill(eyePupilR);
-
+		} else {
+			g.setColor(Color.red);
+			g.fill(eyeWhiteR);
+			
+			g.fill(eyePupilR);	
+			
+		}
 		Shape shell3 = new Ellipse2D.Double(45, 20, 10, 10);
 		Shape shell2 = new Ellipse2D.Double(35, 10, 30, 30);
 		Shape shell1 = new Ellipse2D.Double(25, 0, 50, 50);

@@ -47,6 +47,8 @@ public class Aquarium extends GFX {
 		// Don't change this here, edit the variables instead.
 		super(WIDTH, HEIGHT);
 
+		
+		// TA Grace helped me put the floating for loop I had in a method
 		this.fillBubble();
 			
 		Random random = new Random();
@@ -103,9 +105,8 @@ public class Aquarium extends GFX {
 		// Draw the "ocean" background.
 		// g.setColor(Color.blue);
 		
-		if (algorithm.green < 255) {
-			algorithm.green += 1;
-		}
+		algorithm.update();
+		
 		g.setColor(new Color(0, algorithm.green, 255));
 		
 		g.fillRect(0, 0, getWidth(), getHeight());
@@ -126,6 +127,8 @@ public class Aquarium extends GFX {
 		
 		g.setColor(BROWN);
 		g.fillRect(400, 430, 120, 80);
+		
+		
 		// g.draw(box);
 		// g.fill(box);
 		// b1.draw(g);
@@ -139,6 +142,8 @@ public class Aquarium extends GFX {
 		 */
 
 		// Draw our snail!
+	
+		
 		algorithm.draw(g);
 
 		/*

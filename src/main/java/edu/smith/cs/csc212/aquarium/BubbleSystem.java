@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
-import java.util.Random;
+// import java.util.Random;
 
 public class BubbleSystem {
 	
@@ -48,7 +48,7 @@ public class BubbleSystem {
 		 * if (this.delay > 100) { this.delay = 0; this.x -= 40; if(this.x < 0 ) {
 		 * this.x = 500; } }
 		 */
-		this.wiggle = (int) (30.0 * Math.sin(this.y / 80.0)); 
+		this.wiggle = (int) (30.0 * Math.sin(this.y / 100.0)); 
 		
 	}
 	

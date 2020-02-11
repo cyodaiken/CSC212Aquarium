@@ -34,6 +34,7 @@ public class Snail {
 	 * @param s  - the "positioning" of the Snail
 	 */
 	public Snail(int sx, int sy, String s) {
+		
 		this.setSide(s);
 		this.x = sx;
 		this.y = sy;
@@ -146,7 +147,12 @@ public class Snail {
 		g.setColor(bodyColor);
 		g.fill(body);
 		g.fill(tentacleL);
-		g.setColor(Color.white);
+		
+		if (Snail.green < 130) { 
+			g.setColor(Color.white);
+		} else {
+			g.setColor(Color.black);
+		}
 		g.fill(eyeWhiteL);
 		g.setColor(eyeColor);
 		g.fill(eyePupilL);

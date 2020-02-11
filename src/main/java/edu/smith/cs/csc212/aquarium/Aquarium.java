@@ -30,6 +30,9 @@ public class Aquarium extends GFX {
 	 * This is a static variable that tells us how tall the aquarium is.
 	 */
 	public static int HEIGHT = 500;
+	
+	// source: http://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
+	public static final Color BROWN = new Color(102, 51, 0);
 
 	/**
 	 * Put a snail on the top of the tank.
@@ -43,8 +46,20 @@ public class Aquarium extends GFX {
 		// Here we ask GFX to make our window of size WIDTH and HEIGHT.
 		// Don't change this here, edit the variables instead.
 		super(WIDTH, HEIGHT);
-		
+
 		this.fillBubble();
+			
+		Random random = new Random();
+		
+		for (int i = 0; i < this.fish.length; i++) {
+			Color rcolor = Color.getHSBColor( random.nextFloat(), 0.8f, 0.8f);
+			boolean isLittle = random.nextBoolean();
+			boolean facingLeft = random.nextBoolean();
+			int x = random.nextInt(500);
+			int y = random.nextInt(500);
+			
+			this.fish[i] = new Fish(x, y, rcolor, isLittle, facingLeft);
+		}
 	}
 
 	/*
@@ -52,62 +67,68 @@ public class Aquarium extends GFX {
 	 * fish int fish3X = -200;
 	 */
 
-	Fish nemo = new Fish(Color.magenta, 250, 250, true, true);
-	Fish marlin = new Fish(Color.orange, 100, 100, false, false);
-	Fish dory = new Fish(Color.pink, 300, 100, true, false);
-	Fish tuna = new Fish(Color.red, 100, 400, false, true);
-	Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
-
-	BubbleSystem[] bubble = new BubbleSystem[10];
+	/*
+	 * Fish nemo = new Fish(Color.magenta, 250, 250, true, true); Fish marlin = new
+	 * Fish(Color.orange, 100, 100, false, false); Fish dory = new Fish(Color.pink,
+	 * 300, 100, true, false); Fish tuna = new Fish(Color.red, 100, 400, false,
+	 * true); Fish salmon = new Fish(Color.yellow, 20, 400, false, true);
+	 */
 	
-	Shape box = new Ellipse2D.Double(420, 430, 100, 80);
+	Fish[] fish = new Fish[15];
+	BubbleSystem[] bubble = new BubbleSystem[10];
 
+	// Shape box = new Ellipse2D.Double(420, 430, 100, 80);
 	// BubbleSystem b1 = new BubbleSystem(Color.white, 200, 200);
 
-	
+
 	public void fillBubble() {
-		
+
 		for (int i = 0; i < bubble.length; i++) {
-			  Random random = new Random(); 
-			  
-			  int nX = random.nextInt(500 + 1 - 450) + 450; 
-			  int nY = random.nextInt(500);
-			  
-			  // source: https://stackoverflow.com/questions/2444019/how-do-i-generate-a-random-integer-between-min-and-max-in-java
-			  int nW = random.nextInt(15 + 1 - 7) + 7;
-			 
-			  bubble[i] = new BubbleSystem(Color.white, nX, nY, nW, nW);
+			Random random = new Random(); 
+
+			int nX = random.nextInt(500 + 1 - 450) + 450; 
+			int nY = random.nextInt(500);
+
+			// source: https://stackoverflow.com/questions/2444019/how-do-i-generate-a-random-integer-between-min-and-max-in-java
+			int nW = random.nextInt(15 + 1 - 7) + 7;
+
+			bubble[i] = new BubbleSystem(Color.white, nX, nY, nW, nW);
 		}
-		
+
 	}
-	
-	
+
+
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
-		g.setColor(Color.blue);
+		// g.setColor(Color.blue);
+		
+		if (algorithm.green < 255) {
+			algorithm.green += 1;
+		}
+		g.setColor(new Color(0, algorithm.green, 255));
+		
 		g.fillRect(0, 0, getWidth(), getHeight());
 
-		salmon.draw(g);
-		nemo.draw(g);
-		tuna.draw(g);
+		/*
+		 * salmon.draw(g); nemo.draw(g); tuna.draw(g);
+		 * 
+		 * marlin.draw(g); dory.draw(g);
+		 */
 
-		marlin.draw(g);
-		dory.draw(g);
-		
 		for (BubbleSystem bubble: bubble){
-			
 			bubble.draw(g);
-			
-		}
-		g.setColor(Color.cyan);
-		g.draw(box);
-		g.fill(box);
+			}
 		
+		for (Fish fish: fish){
+			fish.draw(g);
+			}
 		
-		
+		g.setColor(BROWN);
+		g.fillRect(400, 430, 120, 80);
+		// g.draw(box);
+		// g.fill(box);
 		// b1.draw(g);
-
 
 		/*
 		 * // Draw the fish! DrawFish.facingLeft(g, Color.yellow, fish1X, 200); // Draw

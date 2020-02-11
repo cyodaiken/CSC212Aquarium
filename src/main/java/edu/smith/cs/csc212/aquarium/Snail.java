@@ -23,6 +23,8 @@ public class Snail {
 	 * The position of the Snail; y-coordinate.
 	 */
 	public int y;
+	
+	int green; 
 
 	/**
 	 * Create a snail at (sx, sy) with position s.
@@ -35,6 +37,7 @@ public class Snail {
 		this.setSide(s);
 		this.x = sx;
 		this.y = sy;
+		this.green = 0;
 	}
 
 	/**
@@ -50,6 +53,39 @@ public class Snail {
 	 * TODO: move the snail about.
 	 */
 	public void move() {
+		
+		if (this.direction == "top") {
+			this.x +=3;
+			
+			if (this.x >= 450) {
+				
+				this.direction = "right";
+				}
+			}
+		
+		if (this.direction == "bottom") {
+			this.x -=3;
+			
+			if (this.x <= 50) {
+				
+				this.direction = "left";
+				}
+		}
+		
+				if (this.direction == "left") {
+					this.y -=3;
+					if (this.y <= 50) {
+						this.direction = "top";	
+				}
+		}
+		
+				if (this.direction == "right") {
+					this.y +=3;
+					if (this.y >= 450) {
+						this.direction = "bottom";	
+				}
+		}
+		
 
 	}
 
@@ -84,6 +120,9 @@ public class Snail {
 			position.rotate(-Math.PI / 2);
 			drawSnail(position, Color.red, Color.white, Color.black);
 		}
+		
+		
+		
 
 		// It's OK if you forget this, Java will eventually notice, but better to have
 		// it!

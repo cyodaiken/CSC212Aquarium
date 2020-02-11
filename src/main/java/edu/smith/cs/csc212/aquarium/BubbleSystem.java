@@ -34,9 +34,13 @@ public class BubbleSystem {
 		
 		// this.delay += 1;
 		
+		// Random random = new Random();
+		
+		// int speed = random.nextInt(3 + 1 -1) + 1;
+	
 		this.y -= 1;
 		
-		if (this.y == -30) {
+		if (this.y == -20) {
 			this.y = 540;	
 		}
 		

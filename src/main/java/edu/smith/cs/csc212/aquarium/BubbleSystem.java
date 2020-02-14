@@ -15,9 +15,6 @@ public class BubbleSystem {
 	int h; 
 	Color color;
 	
-	
-	
-	
 	public BubbleSystem(Color c, int startX, int startY, int width, int height) {
 		
 		this.color = c;
@@ -25,8 +22,7 @@ public class BubbleSystem {
 		this.y = startY;
 		this.w = width;
 		this.h = width;
-		this.wiggle = 0;
-		
+		this.wiggle = 0;	
 		
 	}
 	
@@ -36,28 +32,26 @@ public class BubbleSystem {
 		
 		if (this.y == -200) {
 			this.y = 540;	
-		}
-		
+		}	
 	
 		this.wiggle = (int) (30.0 * Math.sin(this.y / 100.0)); 
 		
 	}
 	
-	
 	public void draw(Graphics2D g) {
-		
+
 		g.setColor(color);
-		
+
 		Shape bubble = new Ellipse2D.Double(x - 15 + this.wiggle, y - 10, w, h);
-		
+
 		g.draw(bubble);
 		g.fill(bubble);
-		
+
 		this.swim();
-	
-	}
-	
-
 
 	}
+
+
+
+}
 

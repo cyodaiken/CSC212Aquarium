@@ -92,13 +92,10 @@ public class Aquarium extends GFX {
 
 		for (int i = 0; i < bubble.length; i++) {
 			Random random = new Random(); 
-
 			int nX = random.nextInt(500 + 1 - 450) + 450; 
 			int nY = random.nextInt(500);
-
 			// source: https://stackoverflow.com/questions/2444019/how-do-i-generate-a-random-integer-between-min-and-max-in-java
 			int nW = random.nextInt(15 + 1 - 7) + 7;
-
 			bubble[i] = new BubbleSystem(Color.white, nX, nY, nW, nW);
 		}
 
@@ -141,7 +138,6 @@ public class Aquarium extends GFX {
 		shark.draw(g);
 		
 
-		//food.animate();
 	}
 
 	public static void main(String[] args) {

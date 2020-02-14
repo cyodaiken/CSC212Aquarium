@@ -35,27 +35,27 @@ public class Snail {
 	 * @param s  - the "positioning" of the Snail
 	 */
 	public Snail(int sx, int sy, String s) {
-		
+
 		this.setSide(s);
 		this.x = sx;
 		this.y = sy;
 		this.green = 0;
 		this.isAwake = false;
 	}
-	
+
 	public void update() {
 		if (this.isAwake) {	
 			if (this.green > 0) {
-			this.green -= 1; 
+				this.green -= 1; 
 			} else {
 				this.isAwake = false;
 			}
 		} else {
 			// asleep
 			if (this.green < 255) {
-				
-					this.green += 1;
-				
+
+				this.green += 1;
+
 			} else {
 				this.isAwake = true;
 			}
@@ -75,39 +75,39 @@ public class Snail {
 	 * TODO: move the snail about.
 	 */
 	public void move() {
-		
+
 		if (this.direction == "top" && isAwake) {
 			this.x +=3;
-			
+
 			if (this.x >= 450) {
-				
+
 				this.direction = "right";
-				}
 			}
-		
+		}
+
 		if (this.direction == "bottom" && isAwake) {
 			this.x -=3;
-			
+
 			if (this.x <= 50) {
-				
+
 				this.direction = "left";
-				}
+			}
 		}
-		
-				if (this.direction == "left" && isAwake) {
-					this.y -=3;
-					if (this.y <= 50) {
-						this.direction = "top";	
-				}
+
+		if (this.direction == "left" && isAwake) {
+			this.y -=3;
+			if (this.y <= 50) {
+				this.direction = "top";	
+			}
 		}
-		
-				if (this.direction == "right" && isAwake) {
-					this.y +=3;
+
+		if (this.direction == "right" && isAwake) {
+			this.y +=3;
 					if (this.y >= 450) {
 						this.direction = "bottom";	
+					}
 				}
-		}
-		
+
 
 	}
 
@@ -187,18 +187,18 @@ public class Snail {
 
 		g.setColor(bodyColor);
 		g.fill(tentacleR);
-		
+
 		if (isAwake) {
-		g.setColor(Color.white);
-		g.fill(eyeWhiteR);
-		g.setColor(eyeColor);
-		g.fill(eyePupilR);
+			g.setColor(Color.white);
+			g.fill(eyeWhiteR);
+			g.setColor(eyeColor);
+			g.fill(eyePupilR);
 		} else {
 			g.setColor(Color.red);
 			g.fill(eyeWhiteR);
-			
+
 			g.fill(eyePupilR);	
-			
+
 		}
 		Shape shell3 = new Ellipse2D.Double(45, 20, 10, 10);
 		Shape shell2 = new Ellipse2D.Double(35, 10, 30, 30);

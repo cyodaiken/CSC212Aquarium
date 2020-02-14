@@ -39,14 +39,14 @@ public class HungryFish2 {
 	public void animate(Graphics2D g) {
 		
 		Random random = new Random();
-		
+
 		if ((this.x < 200 && this.y > 400) && this.hungry >=20) {
 			this.hungry = 0;
-			
+
 			this.color = Color.getHSBColor(random .nextFloat(), 0.8f, 0.8f);
-			
+
 		} else {
-			
+
 			this.hungry += 1;
 		}
 
@@ -56,17 +56,16 @@ public class HungryFish2 {
 		  
 		  } else if (this.x > this.speedX - this.destX) {
 			  facingLeft = true; this.x -= this.speedX; }
-		  
+
 		  if (this.y < this.speedY + this.destY) { 
 			  this.y += this.speedY;
-		  
+
 		  } else if (this.y > this.speedY - this.destY) {
 			  this.y -= this.speedY; 
-			  }
-		  
+		  }
+
 		  if (this.y == this.destY || this.x == this.destX) {
 			  
-			 // Random random = new Random(); 
 			  int aDestX = random.nextInt(200 + 1); 
 			  int aDestY = random.nextInt(500 + 1 - 400) + 400; 
 			  if (this.hungry >= 20) { 
@@ -75,20 +74,18 @@ public class HungryFish2 {
 				  this.destY = aDestY; 
 				  this.hungry = 0;
 				  this.color = Color.blue;
-				  
-				  
-			} else { 
-				this.destX = random.nextInt(500); 
-				 this.destY = random.nextInt(500); 
-				 
-				 
-				  } 
-			  }
-		  
+			  } else { 
+				  this.destX = random.nextInt(500); 
+				  this.destY = random.nextInt(500); 
+
+
+			  } 
 		  }
-	
-	
-	
+
+	}
+
+
+
 	public void draw(Graphics2D g) {
 		
 		this.animate(g);

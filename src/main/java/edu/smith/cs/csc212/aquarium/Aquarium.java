@@ -10,7 +10,7 @@ import java.awt.geom.Ellipse2D;
 import me.jjfoley.gfx.GFX;
 
 
-// Didn't have a buddy in lab
+
 /**
  * Aquarium is a graphical "application" that uses some code I built and have
  * shared with you that takes care of opening a window and communicating with
@@ -27,6 +27,9 @@ public class Aquarium extends GFX {
 	/**
 	 * This is a static variable that tells us how wide the aquarium is.
 	 */
+	
+
+	
 	public static int WIDTH = 500;
 	/**
 	 * This is a static variable that tells us how tall the aquarium is.
@@ -35,6 +38,7 @@ public class Aquarium extends GFX {
 	
 	// source: http://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
 	public static final Color BROWN = new Color(102, 51, 0);
+	public static final Color GREEN2 = new Color(0, 64, 0, 200);
 
 	/**
 	 * Put a snail on the top of the tank.
@@ -64,14 +68,25 @@ public class Aquarium extends GFX {
 			
 			this.fish[i] = new Fish(x, y, rcolor, isLittle, facingLeft);
 		}
+		
+		
+		for (int i = 0; i < this.hungryfish.length; i++) {
+			Color rcolor = Color.getHSBColor( random.nextFloat(), 0.8f, 0.8f);
+			boolean isLittle = random.nextBoolean();
+			boolean facingLeft = random.nextBoolean();
+			int x = random.nextInt(500);
+			int y = random.nextInt(500);
+			
+			this.hungryfish[i] = new HungryFish2(x, y, rcolor, isLittle, facingLeft);
+		}
 	}
 
 
-	Fish[] fish = new Fish[15];
+	Fish[] fish = new Fish[5];
 	BubbleSystem[] bubble = new BubbleSystem[10];
-	
+	HungryFish food = new HungryFish();
 
-
+	HungryFish2[] hungryfish = new HungryFish2[10];
 	public void fillBubble() {
 
 		for (int i = 0; i < bubble.length; i++) {
@@ -108,16 +123,23 @@ public class Aquarium extends GFX {
 			fish.draw(g);
 			}
 		
+		for (HungryFish2 hungryfish: hungryfish){
+			hungryfish.draw(g);
+			}
+		
+		
 		g.setColor(BROWN);
+		// https://docs.oracle.com/javase/tutorial/2d/geometry/primitives.html
 		g.fillRect(400, 430, 120, 80);
 		
+		food.draw(g);
 
 		// Draw our snail!
 	
-		
 		algorithm.draw(g);
+		
 
-	
+		//food.animate();
 	}
 
 	public static void main(String[] args) {

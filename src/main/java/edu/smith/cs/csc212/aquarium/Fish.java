@@ -3,6 +3,7 @@ package edu.smith.cs.csc212.aquarium;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.Random;
+//Didn't have a buddy in lab
 
 public class Fish {
 	// Every fish has an x which is an int

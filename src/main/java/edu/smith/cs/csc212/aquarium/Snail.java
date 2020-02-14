@@ -76,7 +76,7 @@ public class Snail {
 	 */
 	public void move() {
 		
-		if (this.direction == "top") {
+		if (this.direction == "top" && isAwake) {
 			this.x +=3;
 			
 			if (this.x >= 450) {
@@ -85,7 +85,7 @@ public class Snail {
 				}
 			}
 		
-		if (this.direction == "bottom") {
+		if (this.direction == "bottom" && isAwake) {
 			this.x -=3;
 			
 			if (this.x <= 50) {
@@ -94,14 +94,14 @@ public class Snail {
 				}
 		}
 		
-				if (this.direction == "left") {
+				if (this.direction == "left" && isAwake) {
 					this.y -=3;
 					if (this.y <= 50) {
 						this.direction = "top";	
 				}
 		}
 		
-				if (this.direction == "right") {
+				if (this.direction == "right" && isAwake) {
 					this.y +=3;
 					if (this.y >= 450) {
 						this.direction = "bottom";	

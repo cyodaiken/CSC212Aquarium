@@ -135,7 +135,6 @@ public class Aquarium extends GFX {
 		g.fillRect(400, 430, 120, 80);
 		
 		
-
 		// Draw our snail!
 	
 		algorithm.draw(g);

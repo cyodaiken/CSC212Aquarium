@@ -9,8 +9,6 @@ import java.awt.geom.Ellipse2D;
 
 import me.jjfoley.gfx.GFX;
 
-
-
 /**
  * Aquarium is a graphical "application" that uses some code I built and have
  * shared with you that takes care of opening a window and communicating with
@@ -27,8 +25,6 @@ public class Aquarium extends GFX {
 	/**
 	 * This is a static variable that tells us how wide the aquarium is.
 	 */
-	
-
 	
 	public static int WIDTH = 500;
 	/**
@@ -104,14 +100,13 @@ public class Aquarium extends GFX {
 
 	@Override
 	public void draw(Graphics2D g) {
+		
 		// Draw the "ocean" background.
-	
 		algorithm.update();
-		
 		g.setColor(new Color(0, algorithm.green, 255));
-		
 		g.fillRect(0, 0, getWidth(), getHeight());
 
+		// draw algae
 		food.draw(g);
 	
 		for (BubbleSystem bubble: bubble){
@@ -126,7 +121,7 @@ public class Aquarium extends GFX {
 			hungryfish.draw(g);
 			}
 		
-		
+		// treasure chest
 		g.setColor(BROWN);
 		// https://docs.oracle.com/javase/tutorial/2d/geometry/primitives.html
 		g.fillRect(400, 430, 120, 80);
@@ -136,8 +131,6 @@ public class Aquarium extends GFX {
 	
 		algorithm.draw(g);
 		shark.draw(g);
-		
-
 	}
 
 	public static void main(String[] args) {

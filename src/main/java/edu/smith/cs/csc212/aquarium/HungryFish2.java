@@ -88,7 +88,7 @@ public class HungryFish2 {
 
 	public void draw(Graphics2D g) {
 		
-		this.animate(g);
+		
 
 		if (isLittle && facingLeft) {
 			DrawFish.smallFacingLeft(g, this.color, this.x, this.y);
@@ -100,6 +100,8 @@ public class HungryFish2 {
 		} else {
 			DrawFish.facingRight(g, this.color, this.x, this.y);
 		}
+		
+		this.animate(g);
 
 	}
 

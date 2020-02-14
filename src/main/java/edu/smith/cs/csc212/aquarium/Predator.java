@@ -61,14 +61,14 @@ public class Predator {
 	}
 	
 public void draw(Graphics2D g) {
-		
-		this.swim();
 
 		if (facingLeft) {
 			this.facingLeft(g, this.color, this.x, this.y);
 		} else {
 			this.facingRight(g, this.color, this.x, this.y);
 		}
+		
+		this.swim();
 
 	}
 

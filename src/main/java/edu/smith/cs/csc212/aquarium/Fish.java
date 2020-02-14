@@ -56,14 +56,11 @@ public class Fish {
 			Random random = new Random(); 
 			this.destX = random.nextInt(500); 
 			this.destY = random.nextInt(500);
-
 		}
 
 	}
 
 	public void draw(Graphics2D g) {
-		
-		this.swim();
 
 		if (isLittle && facingLeft) {
 			DrawFish.smallFacingLeft(g, this.color, this.x, this.y);
@@ -75,6 +72,8 @@ public class Fish {
 		} else {
 			DrawFish.facingRight(g, this.color, this.x, this.y);
 		}
+		
+		this.swim();
 
 	}
 

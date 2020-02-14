@@ -14,7 +14,7 @@ public class BubbleSystem {
 	int w;
 	int h; 
 	Color color;
-	int period = 0; 
+	
 	
 	
 	
@@ -26,7 +26,7 @@ public class BubbleSystem {
 		this.w = width;
 		this.h = width;
 		this.wiggle = 0;
-		// this.delay = delay;	
+		
 		
 	}
 	
@@ -34,7 +34,7 @@ public class BubbleSystem {
 	
 		this.y -= 1;
 		
-		if (this.y == -20) {
+		if (this.y == -200) {
 			this.y = 540;	
 		}
 		

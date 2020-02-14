@@ -85,8 +85,9 @@ public class Aquarium extends GFX {
 	Fish[] fish = new Fish[5];
 	BubbleSystem[] bubble = new BubbleSystem[10];
 	HungryFish food = new HungryFish();
-
-	HungryFish2[] hungryfish = new HungryFish2[10];
+	Predator shark = new Predator(100, 100, Color.gray, true, false);
+	HungryFish2[] hungryfish = new HungryFish2[5];
+	
 	public void fillBubble() {
 
 		for (int i = 0; i < bubble.length; i++) {
@@ -114,6 +115,7 @@ public class Aquarium extends GFX {
 		
 		g.fillRect(0, 0, getWidth(), getHeight());
 
+		food.draw(g);
 	
 		for (BubbleSystem bubble: bubble){
 			bubble.draw(g);
@@ -132,11 +134,12 @@ public class Aquarium extends GFX {
 		// https://docs.oracle.com/javase/tutorial/2d/geometry/primitives.html
 		g.fillRect(400, 430, 120, 80);
 		
-		food.draw(g);
+		
 
 		// Draw our snail!
 	
 		algorithm.draw(g);
+		shark.draw(g);
 		
 
 		//food.animate();
